@@ -14,16 +14,16 @@ try:
     result = subprocess.check_output(["osascript", "-e", script], text = True).strip()
     if result == "authenticated":
         print("✅ macOS authentication succesful")
+        subprocess.run(["afplay", "Sound effect.mp3"])
         subprocess.run(['osascript',"-e", 'set volume output volume 10'])
-        subprocess.run(["afplay", "p0rn-hub-into.mp3"])
         webbrowser.open(redirect_url)
     elif result == "failed":
         print("❌ macOS authentication failed.")
+        subprocess.run(["afplay", "Sound effect.mp3"])
         subprocess.run(['osascript',"-e", 'set volume output volume 10'])
-        subprocess.run(["afplay", "p0rn-hub-into.mp3"])
         webbrowser.open(redirect_url)
 except subprocess.CalledProcessError:
     print("❌ macOS authentication failed.")
+    subprocess.run(["afplay", "Sound effect.mp3"])
     subprocess.run(['osascript',"-e", 'set volume output volume 10'])
-    subprocess.run(["afplay", "p0rn-hub-into.mp3"])
     webbrowser.open(redirect_url)
